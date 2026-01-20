@@ -97,14 +97,14 @@ class AdminController extends Controller
 
 
 
+//For Super Admin to create,store,delete new student records
 
-    // نموذج صفحة Create
 public function create()
 {
-    return view('admin.create'); // هنعمل view بسيط لإضافة طالب
+    return view('admin.create');
 }
 
-// تخزين طالب جديد
+
 public function store(Request $request)
 {
     $data = $request->validate([

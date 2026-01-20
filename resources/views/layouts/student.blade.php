@@ -27,15 +27,9 @@
 
             
             <nav class="space-x-4">
-                <a href="{{ route('admin.index') }}" class="hover:underline">
+                <a href="{{ route('student.index') }}" class="hover:underline">
                     Search
                 </a>
-                    <form action="{{ route('admin.logout') }}" method="POST">
-                @csrf
-                <button type="submit"class="hover:underline">
-                    Logout
-                </button>
-            </form>
             </nav>
         </div>
     </header>
@@ -47,7 +41,7 @@
 
     
     <footer style="background-color: #420707;" class="text-white text-center py-3 text-sm">
-        © {{ date('Y') }}مدرسة الشمامسة بكنيسة القديس ماريوحنا الحبيب
+         © {{ date('Y') }}مدرسة الشمامسة بكنيسة القديس ماريوحنا الحبيب
     </footer>
 
 </body>

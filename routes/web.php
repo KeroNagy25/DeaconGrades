@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use App\Http\Controllers\AdminAuthController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+route::get('/result', [StudentController::class, 'index'])->name('student.index');
+route::get('/result/search', [StudentController::class, 'search'])->name('student.search');
 
 
 Route::prefix('admin')->group(function() {
