@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'إدارة الطلبة')
+@section('title', 'Add Grades-stjohndeacon')
 
 @section('content')
 
@@ -44,7 +44,13 @@
                 <tr class="border-b hover:bg-red-50">
                     <td class="p-3 text-red-900 font-medium">{{ $student->full_name }}</td>
                     <td class="p-3 text-red-900">{{ $student->academic_year }}</td>
-                    <td class="p-3 font-bold text-red-900">{{ $student->total }}</td>
+                    <td class="p-3 font-bold text-red-900">
+                        @if(Str::contains($student->academic_year, 'حضانة'))
+                            {{ $student->evaluation ?? '—' }}
+                        @else
+                            {{ $student->total }}
+                        @endif
+                    </td>
                     <td class="p-3 text-center">
                         <a href="{{ route('admin.edit', $student->id) }}"
                            class="bg-red-900 hover:bg-red-800 text-white px-4 py-1 rounded">

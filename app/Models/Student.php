@@ -4,11 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Student extends Model
 {
     use HasFactory;
     protected $table = 'students';
+
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     protected $fillable = [
         'full_name',
@@ -23,5 +27,16 @@ class Student extends Model
         'coptic_grade',
         'theology_grade',
         'total',
+        'evaluation',
     ];
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->{$model->getKeyName()})) {
+                $model->{$model->getKeyName()} = (string) Str::uuid();
+            }
+        });
+    }
 }

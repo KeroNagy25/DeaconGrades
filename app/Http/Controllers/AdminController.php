@@ -52,6 +52,11 @@ class AdminController extends Controller
         $years = AdminYear::where('admin_id', $admin->id)->pluck('academic_year')->toArray();
 
         $student = Student::whereIn('academic_year', $years)->findOrFail($id);
+        if (str_contains($student->academic_year, 'حضانة')) {
+        $data = $request->all();
+        $data['evaluation']= $request->evaluation;
+        $student = Student::whereIn('academic_year', $years)->findOrFail($id)->update($data);
+        } else {
         $total = 
         $request->attendance_grade + 
         $request->hymns_grade + 
@@ -60,6 +65,8 @@ class AdminController extends Controller
 
         $data = $request->all();
         $data['total'] = $total;
+        $student = Student::whereIn('academic_year', $years)->findOrFail($id)->update($data);
+        }
 
          $student = Student::whereIn('academic_year', $years)->findOrFail($id)->update($data);
 
