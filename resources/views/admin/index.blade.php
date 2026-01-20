@@ -4,6 +4,10 @@
 
 @section('content')
 
+@php
+  $admin = Auth::guard('admin')->user();
+@endphp
+
 <h2 class="text-3xl font-bold mb-6 text-red-900">🔍 البحث عن المخدوم</h2>
 
 @if(session('success'))
@@ -28,6 +32,15 @@
     </button>
 </form> 
 
+@if($admin->superadmin)
+    <div class="mb-4">
+        <a href="{{ route('admin.create') }}"
+           class="bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-lg font-semibold shadow-md">
+            ➕ إضافة طالب جديد
+        </a>
+    </div>
+@endif
+
 <div class="overflow-x-auto">
     <table class="w-full bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
         
@@ -37,6 +50,9 @@
                 <th class="p-3 text-right">السنة</th>
                 <th class="p-3 text-right">المجموع</th>
                 <th class="p-3 text-center">تعديل</th>
+                @if($admin->superadmin)
+                    <th class="p-3 text-center">حذف</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -57,6 +73,17 @@
                            تعديل
                         </a>
                     </td>
+                    @if($admin->superadmin)
+                        <td class="p-3 text-center">
+                            <form action="{{ route('admin.delete', $student->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذا الطالب؟');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-600 hover:bg-red-500 text-white px-4 py-1 rounded">
+                                    حذف
+                                </button>
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             @empty
                 <tr>
@@ -69,7 +96,8 @@
     </table>
 </div>
 <div class="mt-6 flex justify-center">
-    {{ $students->links('pagination::tailwind') }}
+    {{ $students->links('pagination::tailwind-custom') }}
 </div>
+
 
 @endsection

@@ -33,5 +33,11 @@ Route::prefix('admin')->group(function() {
         Route::get('/search', [AdminController::class, 'search'])->name('admin.search');
         Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
         Route::post('/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+
+        Route::middleware('superadmin')->group(function() {
+        Route::get('/create', [AdminController::class, 'create'])->name('admin.create');
+        Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+        Route::delete('/delete/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
+    });
     });
 });
