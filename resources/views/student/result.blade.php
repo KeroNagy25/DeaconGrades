@@ -56,7 +56,7 @@
                             <strong class="text-red-900">درجة الطقس:</strong> {{ $student->theology_grade }}
                         </div>
                         <div class="col-span-2">
-                            <strong class="text-red-900">المجموع الكلي:</strong> {{ $student->total_grade }}
+                            <strong class="text-red-900">المجموع الكلي:</strong> {{ $student->total}}
                         </div>
                     @endif
                 </div>

@@ -24,13 +24,31 @@
         <input type="number" name="age" value="{{ $student->age }}"
                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-900">
     </div>
+@php
+    $years = [
+        'حضانة', 'اولى ابتدائى', 'ثانية ابتدائى', 'ثالثة ابتدائى',
+        'رابعة ابتدائى', 'خامسة ابتدائى', 'سادسة ابتدائى',
+        'اولى اعدادى', 'ثانية اعدادى', 'ثالثة اعدادى',
+        'اولى ثانوى', 'ثانية ثانوى', 'ثالثة ثانوى'
+    ];
+@endphp
 
     
-    <div>
-        <label class="block mb-1 font-medium text-red-900">السنة الدراسية</label>
-        <input type="text" name="academic_year" value="{{ $student->academic_year }}"
-               class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-900">
-    </div>
+<div>
+    <label class="block mb-1 font-medium text-red-900">السنة الدراسية</label>
+
+    <select name="academic_year"
+            class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-900">
+
+        @foreach ($years as $year)
+            <option value="{{ $year }}"
+                {{ $student->academic_year == $year ? 'selected' : '' }}>
+                {{ $year }}
+            </option>
+        @endforeach
+
+    </select>
+</div>
 
     
     <div>
