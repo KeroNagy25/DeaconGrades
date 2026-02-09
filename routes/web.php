@@ -19,8 +19,6 @@ use App\Http\Controllers\StudentController;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
-Route::get('/', [StudentController::class, 'index'])->name('student.index');
 route::get('/result', [StudentController::class, 'index'])->name('student.index');
 route::get('/result/search', [StudentController::class, 'search'])->name('student.search');
 
