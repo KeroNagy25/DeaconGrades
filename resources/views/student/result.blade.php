@@ -32,7 +32,7 @@
                         <strong class="text-red-900">النوع:</strong> {{ $student->gender }}
                     </div>
                     <div>
-                        <strong class="text-red-900">رتبة الشمامسة:</strong> {{ $student->deacon_rank ?? 'غير محددة' }}
+                        <strong class="text-red-900">رتبة الشمامسة:</strong> {{ $student->deacon_rank ?? 'غير مرشوم' }}
                     </div>
                     <div>
                         <strong class="text-red-900">عدد مرات الحضور من 8:</strong> {{ $student->attendance_count }}
@@ -44,16 +44,16 @@
                         </div>
                     @else
                         <div>
-                            <strong class="text-red-900">درجة الحضور:</strong> {{ $student->attendance_grade }}
+                            <strong class="text-red-900">درجة الحضور 20:</strong> {{ $student->attendance_grade }}
                         </div>
                         <div>
-                            <strong class="text-red-900">درجة الألحان:</strong> {{ $student->hymns_grade }}
+                            <strong class="text-red-900">درجة الألحان 40:</strong> {{ $student->hymns_grade }}
                         </div>
                         <div>
-                            <strong class="text-red-900">درجة القبطي:</strong> {{ $student->coptic_grade }}
+                            <strong class="text-red-900">درجة القبطي 20:</strong> {{ $student->coptic_grade }}
                         </div>
                         <div>
-                            <strong class="text-red-900">درجة الطقس:</strong> {{ $student->theology_grade }}
+                            <strong class="text-red-900">درجة الطقس 20:</strong> {{ $student->theology_grade }}
                         </div>
                         <div class="col-span-2">
                             <strong class="text-red-900">المجموع الكلي:</strong> {{ $student->total}}
