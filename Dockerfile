@@ -1,4 +1,4 @@
-# Use official PHP image with Composer
+# Use official PHP image
 FROM php:8.2-fpm
 
 # Set working directory
@@ -26,4 +26,4 @@ RUN composer install --no-dev --optimize-autoloader
 EXPOSE 8000
 
 # Start the application
-CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
