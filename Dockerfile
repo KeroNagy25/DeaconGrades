@@ -20,8 +20,7 @@ COPY . .
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Generate app key
-RUN php artisan key:generate
+# ❌ لا تشغل php artisan key:generate هنا
 
 # Expose port
 EXPOSE 8000
